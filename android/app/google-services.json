@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "46360822648",
+    "firebase_url": "https://librarybooklocator.firebaseio.com",
+    "project_id": "librarybooklocator",
+    "storage_bucket": "librarybooklocator.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:46360822648:android:9eea9ad3890ad6e1acfe8d",
+        "android_client_info": {
+          "package_name": "com.example.librarybooklocator"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "46360822648-lmvg2sdrr3uba1cgeeadeo08gof73mru.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA9nlOomfReEPQB4cti-a2E0Juneb9101U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "46360822648-lmvg2sdrr3uba1cgeeadeo08gof73mru.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
