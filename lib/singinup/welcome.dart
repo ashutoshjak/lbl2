@@ -13,6 +13,7 @@ class _WelcomeState extends State<Welcome> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: Text('Sign in/up'),
         backgroundColor: Colors.brown[400],
       ),
@@ -27,7 +28,7 @@ class _WelcomeState extends State<Welcome> {
 
           RaisedButton(
             onPressed: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>LoginPage(),fullscreenDialog: true));
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>Login(),fullscreenDialog: true));
             },
             color: Colors.brown[300],
             child: Text('Signin',style: TextStyle(color: Colors.white),),
@@ -35,7 +36,7 @@ class _WelcomeState extends State<Welcome> {
           ),
           RaisedButton(
             onPressed: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>Signup(),fullscreenDialog: true));
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>Register(),fullscreenDialog: true));
             },
             color: Colors.brown[300],
             child: Text('Signup',style: TextStyle(color: Colors.white),),
