@@ -10,7 +10,7 @@ import 'package:autocomplete_textfield/autocomplete_textfield.dart';
 import 'modal.dart';
 
 class HomePage extends StatefulWidget {
-  //HomePage() : super();
+  HomePage() : super();
 
   @override
   _HomePageState createState() => _HomePageState();
@@ -25,7 +25,7 @@ class _HomePageState extends State<HomePage> {
   bool loading = true;
 
   void getBooks() async {
-    String url = "http://10.0.2.2/librarybooklocator/public/api/book/1";
+    String url = "http://10.0.2.2/librarybooklocator/public/api/books";
     try {
       final response = await http.get(url);
       if (response.statusCode == 200) {
@@ -92,26 +92,43 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget row(Book book) {
-    return Padding(
-      padding: EdgeInsets.symmetric(
-        vertical: 20.0,
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[
-          Text(
-            book.book_name,
-            style: TextStyle(fontSize: 16.0),
+    return Row(
+
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: <Widget>[
+        SizedBox(
+          height: 50.0,
+        ),
+
+        SizedBox(
+          width: 2.0,
+        ),
+
+
+        Expanded(
+          child:Text(
+            book.bookName,
+            style: TextStyle(fontWeight: FontWeight.bold ,),
           ),
-          SizedBox(
-            width: 10.0,
+        ),
+
+
+        Expanded(
+          child: Text(
+            book.authorName,
           ),
-          Text(
-            book.author_name,
-            style: TextStyle(fontSize: 16.0),
-          )
-        ],
-      ),
+        ),
+
+        SizedBox(
+          height: 50.0,
+        ),
+
+        SizedBox(
+          width: 2.0,
+        ),
+
+
+      ],
     );
   }
 
@@ -168,18 +185,18 @@ class _HomePageState extends State<HomePage> {
               decoration:
               textInputDecoration.copyWith(hintText: 'Book Name'),
               itemFilter: (item, query) {
-                return item.book_name
+                return item.bookName
                     .toLowerCase()
                     .startsWith(query.toLowerCase());
               },
               itemSorter: (a, b) {
-                return a.book_name.compareTo(b.book_name);
+                return a.bookName.compareTo(b.bookName);
               },
 
               itemSubmitted: (item) {
                 setState(() {
                   searchTextField.textField.controller.text =
-                      item.book_name;
+                      item.bookName;
                 });
               },
               itemBuilder: (context, item) {
