@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:librarybooklocator/singinup/network_utils/api.dart';
 import 'package:librarybooklocator/singinup/pages/homepage.dart';
@@ -34,15 +35,23 @@ class _LoginState extends State<Login> {
       key: _scaffoldKey,
       resizeToAvoidBottomInset: false,
       body: Container(
-        color: Colors.brown[200],
+       // color: Colors.brown[200],
         child: Stack(
+          fit: StackFit.expand,
           children: <Widget>[
+            Image.asset("assets/images/shelf.png",
+              fit: BoxFit.cover,
+            color:Colors.black.withOpacity(0.6),
+            colorBlendMode: BlendMode.darken,),
             Positioned(
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
+                    new Padding(padding: const EdgeInsets.all(20.0),
+                      child: new Text('Login',style: TextStyle(fontSize: 25.0,color: Colors.white),textAlign: TextAlign.center,),),
+                    SizedBox(height: 20.0),
                     Card(
                       elevation: 4.0,
                       color: Colors.white,
@@ -121,7 +130,7 @@ class _LoginState extends State<Login> {
                                       ),
                                     ),
                                   ),
-                                  color: Colors.brown[200],
+                                  color: Colors.orangeAccent,
                                   disabledColor: Colors.grey,
                                   shape: new RoundedRectangleBorder(
                                       borderRadius:
@@ -143,7 +152,7 @@ class _LoginState extends State<Login> {
                       padding: const EdgeInsets.only(top: 20),
                       child: InkWell(
                         onTap: () {
-                          Navigator.push(
+                          Navigator.pushReplacement(
                               context,
                               new MaterialPageRoute(
                                   builder: (context) => Register()));
@@ -183,7 +192,7 @@ class _LoginState extends State<Login> {
       SharedPreferences localStorage = await SharedPreferences.getInstance();
       localStorage.setString('token', json.encode(body['token']));
       localStorage.setString('user', json.encode(body['user']));
-      Navigator.push(
+      Navigator.pushReplacement(
         context,
         new MaterialPageRoute(
             builder: (context) => HomePage()

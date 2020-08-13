@@ -23,15 +23,16 @@ class _RequestBookState extends State<RequestBook> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        title: Text('Request Book'),
-        backgroundColor: Colors.brown[400],
+        title: Text('Request Book',),
+        centerTitle: true,
+        backgroundColor: Colors.brown,
       ),
       backgroundColor: Colors.brown[100],
       body: Container(
         padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
         child: Column(
           children: <Widget>[
-            SizedBox(height: 20.0),
+            SizedBox(height: 50.0),
             TextField(
               controller: _book_name,
               decoration: textInputDecoration.copyWith(hintText: 'Book Name'),
@@ -42,12 +43,19 @@ class _RequestBookState extends State<RequestBook> {
               decoration: textInputDecoration.copyWith(hintText: 'Author Name'),
             ),
             SizedBox(height: 20.0),
-            RaisedButton(
-              onPressed: addData,
-              color: Colors.brown[300],
-              child: Text(
-                'Submit',
-                style: TextStyle(color: Colors.white),
+            SizedBox(
+              width: 100.0,
+              height: 50.0,
+              child: RaisedButton(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(50.0),
+                ),
+                onPressed: addData,
+                color: Colors.brown,
+                child: Text(
+                  'Submit',
+                  style: TextStyle(color: Colors.white,fontSize: 18.0),
+                ),
               ),
             ),
           ],
@@ -57,7 +65,7 @@ class _RequestBookState extends State<RequestBook> {
   }
 
   void addData() async {
-    String url = "http://10.0.2.2/librarybooklocator/public/api/requestbook";
+    String url = "http://10.0.2.2/LibraryBookLocator/public/api/requestbook";
     await http
         .post(url,
             headers: {'Accept': 'application/json'},

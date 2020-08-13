@@ -25,7 +25,7 @@ class _HomePageState extends State<HomePage> {
   bool loading = true;
 
   void getBooks() async {
-    String url = "http://10.0.2.2/librarybooklocator/public/api/books";
+    String url = "http://10.0.2.2/LibraryBookLocator/public/api/books";
     try {
       final response = await http.get(url);
       if (response.statusCode == 200) {
@@ -140,8 +140,9 @@ class _HomePageState extends State<HomePage> {
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: Text('LibraryBookLocator'),
-        backgroundColor: Colors.brown[400],
+        title: Text('LibraryBookLocator',),
+        centerTitle: true,
+        backgroundColor: Colors.brown,
         actions: <Widget>[
           FlatButton.icon(
             icon: Icon(
@@ -204,20 +205,30 @@ class _HomePageState extends State<HomePage> {
               },
             ),
             SizedBox(height: 20.0),
-            RaisedButton(
-              onPressed: () {},
-              color: Colors.brown[300],
-              child: Text(
-                'Search',
-                style: TextStyle(color: Colors.white),
+            SizedBox(
+              width: 100.0,
+              height: 50.0,
+
+
+              child: RaisedButton(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(50.0),
+                ),
+                onPressed: () {},
+                color: Colors.brown,
+                child: Text(
+                  'Search',
+                  style: TextStyle(color: Colors.white,fontSize: 18.0),
+                ),
               ),
             ),
           ],
         ),
+
       ),
       floatingActionButton: new FloatingActionButton(
         onPressed: () => modal.mainBottomSheet(context),
-        backgroundColor: Colors.brown[400],
+        backgroundColor: Colors.brown,
         child: new Icon(
           Icons.open_in_new,
           color: Colors.white,
@@ -233,7 +244,7 @@ class _HomePageState extends State<HomePage> {
       SharedPreferences localStorage = await SharedPreferences.getInstance();
       localStorage.remove('user');
       localStorage.remove('token');
-      Navigator.push(
+      Navigator.pushReplacement(
           context, MaterialPageRoute(builder: (context) => Welcome()));
     }
   }
