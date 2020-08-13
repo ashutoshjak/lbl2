@@ -25,7 +25,7 @@ class _HomePageState extends State<HomePage> {
   bool loading = true;
 
   void getBooks() async {
-    String url = "http://10.0.2.2/LibraryBookLocator/public/api/books";
+    String url = "http://192.168.100.7/LibraryBookLocator/public/api/books";
     try {
       final response = await http.get(url);
       if (response.statusCode == 200) {
@@ -160,71 +160,73 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
       backgroundColor: Colors.brown[100],
-      body: Container(
-        padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
-        child: Column(
-          children: <Widget>[
-            SizedBox(height: 20.0),
-            new Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: new Text(
-                'Search Book',
-                style: TextStyle(fontSize: 20, color: Colors.brown),
-                textAlign: TextAlign.center,
-              ),
-            ),
-            loading
-                ? Center(
-              child: CircularProgressIndicator(),
-            )
-                : searchTextField = AutoCompleteTextField<Book>(
-              key: key,
-              clearOnSubmit: false,
-              //   controller: ,
-              suggestions: books,
-              style: TextStyle(color: Colors.black, fontSize: 16.0),
-              decoration:
-              textInputDecoration.copyWith(hintText: 'Book Name'),
-              itemFilter: (item, query) {
-                return item.bookName
-                    .toLowerCase()
-                    .startsWith(query.toLowerCase());
-              },
-              itemSorter: (a, b) {
-                return a.bookName.compareTo(b.bookName);
-              },
-
-              itemSubmitted: (item) {
-                setState(() {
-                  searchTextField.textField.controller.text =
-                      item.bookName;
-                });
-              },
-              itemBuilder: (context, item) {
-                return row(item);
-              },
-            ),
-            SizedBox(height: 20.0),
-            SizedBox(
-              width: 100.0,
-              height: 50.0,
-
-
-              child: RaisedButton(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(50.0),
-                ),
-                onPressed: () {},
-                color: Colors.brown,
-                child: Text(
-                  'Search',
-                  style: TextStyle(color: Colors.white,fontSize: 18.0),
+      body: SingleChildScrollView(
+        child: Container(
+          padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
+          child: Column(
+            children: <Widget>[
+              SizedBox(height: 20.0),
+              new Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: new Text(
+                  'Search Book',
+                  style: TextStyle(fontSize: 20, color: Colors.brown),
+                  textAlign: TextAlign.center,
                 ),
               ),
-            ),
-          ],
+              loading
+                  ? Center(
+                child: CircularProgressIndicator(),
+              )
+                  : searchTextField = AutoCompleteTextField<Book>(
+                key: key,
+                clearOnSubmit: false,
+                //   controller: ,
+                suggestions: books,
+                style: TextStyle(color: Colors.black, fontSize: 16.0),
+                decoration:
+                textInputDecoration.copyWith(hintText: 'Book Name'),
+                itemFilter: (item, query) {
+                  return item.bookName
+                      .toLowerCase()
+                      .startsWith(query.toLowerCase());
+                },
+                itemSorter: (a, b) {
+                  return a.bookName.compareTo(b.bookName);
+                },
+
+                itemSubmitted: (item) {
+                  setState(() {
+                    searchTextField.textField.controller.text =
+                        item.bookName;
+                  });
+                },
+                itemBuilder: (context, item) {
+                  return row(item);
+                },
+              ),
+              SizedBox(height: 20.0),
+              SizedBox(
+                width: 100.0,
+                height: 50.0,
+
+
+                child: RaisedButton(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(50.0),
+                  ),
+                  onPressed: () {},
+                  color: Colors.brown,
+                  child: Text(
+                    'Search',
+                    style: TextStyle(color: Colors.white,fontSize: 18.0),
+                  ),
+                ),
+              ),
+            ],
+          ),
+
         ),
-
       ),
       floatingActionButton: new FloatingActionButton(
         onPressed: () => modal.mainBottomSheet(context),
