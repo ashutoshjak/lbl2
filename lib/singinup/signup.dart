@@ -15,15 +15,16 @@ class _RegisterState extends State<Register> {
   final _formKey = GlobalKey<FormState>();
   var email;
   var password;
-
+  var user_name;
+  var user_id;
+//  var phone;
   @override
   Widget build(BuildContext context) {
     return Material(
       child: Container(
-       // color: Colors.brown[200],
+        color: Colors.teal,
         child: Stack(
           fit: StackFit.expand,
-
           children: <Widget>[
             Image.asset("assets/images/shelf.png",
               fit: BoxFit.cover,
@@ -35,9 +36,6 @@ class _RegisterState extends State<Register> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    new Padding(padding: const EdgeInsets.all(20.0),
-                      child: new Text('Register',style: TextStyle(fontSize: 25,color: Colors.white),textAlign: TextAlign.center,),),
-                    SizedBox(height: 20.0),
                     Card(
                       elevation: 4.0,
                       color: Colors.white,
@@ -75,7 +73,53 @@ class _RegisterState extends State<Register> {
                                   return null;
                                 },
                               ),
+                              TextFormField(
+                                style: TextStyle(color: Color(0xFF000000)),
+                                cursorColor: Color(0xFF9b9b9b),
+                                keyboardType: TextInputType.text,
+                                decoration: InputDecoration(
+                                  prefixIcon: Icon(
+                                    Icons.person,
+                                    color: Colors.grey,
+                                  ),
+                                  hintText: "Name",
+                                  hintStyle: TextStyle(
+                                      color: Color(0xFF9b9b9b),
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.normal),
+                                ),
+                                validator: (firstname) {
+                                  if (firstname.isEmpty) {
+                                    return 'Please enter your first name';
+                                  }
+                                  user_name = firstname;
+                                  return null;
+                                },
+                              ),
 
+                              TextFormField(
+                                style: TextStyle(color: Color(0xFF000000)),
+                                cursorColor: Color(0xFF9b9b9b),
+                                keyboardType: TextInputType.text,
+                                decoration: InputDecoration(
+                                  prefixIcon: Icon(
+                                    Icons.perm_identity,
+                                    color: Colors.grey,
+                                  ),
+                                  hintText: "017311",
+                                  hintStyle: TextStyle(
+                                      color: Color(0xFF9b9b9b),
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.normal),
+                                ),
+                                validator: (phonenumber) {
+                                  if (phonenumber.isEmpty) {
+                                    return 'Please enter phone number';
+                                  }
+                                  user_id = phonenumber;
+                                  return null;
+                                },
+                              ),
                               TextFormField(
                                 style: TextStyle(color: Color(0xFF000000)),
                                 cursorColor: Color(0xFF9b9b9b),
@@ -139,7 +183,7 @@ class _RegisterState extends State<Register> {
                       padding: const EdgeInsets.only(top: 20),
                       child: InkWell(
                         onTap: () {
-                          Navigator.pushReplacement(
+                          Navigator.push(
                               context,
                               new MaterialPageRoute(
                                   builder: (context) => Login()));
@@ -171,7 +215,8 @@ class _RegisterState extends State<Register> {
     var data = {
       'email' : email,
       'password': password,
-
+      'user_id': user_id,
+      'user_name': user_name
     };
 
     var res = await Network().authData(data, '/register');
@@ -180,7 +225,7 @@ class _RegisterState extends State<Register> {
       SharedPreferences localStorage = await SharedPreferences.getInstance();
       localStorage.setString('token', json.encode(body['token']));
       localStorage.setString('user', json.encode(body['user']));
-      Navigator.pushReplacement(
+      Navigator.push(
         context,
         new MaterialPageRoute(
             builder: (context) => HomePage()
@@ -193,4 +238,3 @@ class _RegisterState extends State<Register> {
     });
   }
 }
-

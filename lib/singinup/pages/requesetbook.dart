@@ -5,6 +5,8 @@ import 'package:librarybooklocator/singinup/pages/constants.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
+import 'package:librarybooklocator/singinup/pages/homepage.dart';
+
 class RequestBook extends StatefulWidget {
 
   @override
@@ -23,6 +25,18 @@ class _RequestBookState extends State<RequestBook> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
+        leading: Text(''),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.close),
+            onPressed: (){
+              Navigator.push(context, MaterialPageRoute(
+                  builder: (context)=>HomePage()
+              ));
+            }
+          )
+        ],
+
         title: Text('Request Book',),
         centerTitle: true,
         backgroundColor: Colors.brown,
@@ -65,7 +79,7 @@ class _RequestBookState extends State<RequestBook> {
   }
 
   void addData() async {
-    String url = "http://192.168.100.7/LibraryBookLocator/public/api/requestbook";
+    String url = "http://10.0.2.2/LibraryBookLocator/public/api/requestbook";
     await http
         .post(url,
             headers: {'Accept': 'application/json'},
