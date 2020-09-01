@@ -1,17 +1,14 @@
 {
   "images" : [
     {
-      "filename" : "lbl.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "lbl-1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "lbl-2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
