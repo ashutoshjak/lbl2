@@ -1,13 +1,17 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
+import 'package:librarybooklocator/singinup/network_utils/ipaddress.dart';
 import 'package:librarybooklocator/singinup/pages/constants.dart';
 import 'package:librarybooklocator/singinup/network_utils/api.dart';
+import 'package:librarybooklocator/singinup/pages/profile_user.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../welcome.dart';
 import 'package:librarybooklocator/singinup/pages/book.dart';
 import 'package:autocomplete_textfield/autocomplete_textfield.dart';
 import 'package:librarybooklocator/singinup/search_book/search_book.dart';
+import 'package:librarybooklocator/singinup/pages/rule_page.dart';
+import 'package:librarybooklocator/singinup/pages/update_page.dart';
 import 'modal.dart';
 
 class HomePage extends StatefulWidget {
@@ -137,8 +141,9 @@ class _HomePageState extends State<HomePage> {
 
   bool isLoading = false;
 
-  String url1 = "http://10.0.2.2/LibraryBookLocator/public/api/books";
+  String url1 = "http://${Server.ipAddress}/LibraryBookLocator/public/api/books";
 
+// 10.0.2.2
   Future<List<Book>> fetchBook() async {
     try {
       final response = await http.get(url1);
@@ -146,11 +151,34 @@ class _HomePageState extends State<HomePage> {
         List<Book> book = parseRequestBooks(response.body);
         return book;
       } else {
+        failed();
         throw Exception("error");
       }
     } catch (e) {
+      failed();
       throw Exception(e.toString());
     }
+  }
+
+  void failed() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        // return object of type Dialog
+        return AlertDialog(
+          title: new Text("Could not load "),
+          actions: <Widget>[
+            // usually buttons at the bottom of the dialog
+            new FlatButton(
+              child: new Text("Close"),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
   }
 
   List<Book> parseRequestBooks(String responseBody) {
@@ -186,24 +214,33 @@ class _HomePageState extends State<HomePage> {
           'LibraryBookLocator',
         ),
         centerTitle: true,
-        backgroundColor: Colors.brown,
+        backgroundColor: Colors.black,
         actions: <Widget>[
-          FlatButton.icon(
-            icon: Icon(
-              Icons.person,
-              color: Colors.white,
-            ),
-            label: Text(
-              'logout',
-              style: TextStyle(color: Colors.white),
-            ),
-            onPressed: () {
-              logout();
-            },
-          ),
+//          FlatButton.icon(
+//            icon: Icon(
+//              Icons.person,
+//              color: Colors.white,
+//            ),
+//            label: Text(
+//              'logout',
+//              style: TextStyle(color: Colors.white),
+//            ),
+//            onPressed: () {
+//              logout();
+//            },
+//          ),
+
+         IconButton(
+           icon: Icon(Icons.person),
+           onPressed: (){
+             Navigator.push(context, MaterialPageRoute(
+                 builder: (context)=>UserProfile()
+             ));
+           },
+         )
         ],
       ),
-      backgroundColor: Colors.brown[100],
+      backgroundColor: Colors.grey,
 //      body: SingleChildScrollView(
 //        child: Container(
 //          padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
@@ -280,42 +317,6 @@ class _HomePageState extends State<HomePage> {
 
 // above this old body method
 
-//      body: InkWell(
-//        onTap: (){
-//          showSearch(context: context, delegate: SearchBook(book));
-//        },
-//        child: Card(
-//          child: Row(
-//            children: <Widget>[
-////              SizedBox(height: 100,),
-//              Row(
-//                children: <Widget>[
-//                  InkWell(
-//                    child: IconButton(
-//                      icon: Icon(Icons.search),
-//                      onPressed: (){
-//                        showSearch(context: context, delegate: SearchBook(book));
-//                      },
-//                    ),
-//                  ),
-//                  InkWell(
-//                      onTap: (){
-//                        showSearch(context: context, delegate: SearchBook(book));
-//                      },
-//                      child: Text('Click search icon to search')),
-////            InkWell(
-////              child: IconButton(
-////                icon: Icon(Icons.search),onPressed: (){
-////                showSearch(context: context, delegate: SearchBook(book));
-////              },
-////              ),
-////            ),
-//                ],
-//              ),
-//            ],
-//          ),
-//        ),
-//      ),
       body: SingleChildScrollView(
         child: Container(
           padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
@@ -326,55 +327,123 @@ class _HomePageState extends State<HomePage> {
                 padding: const EdgeInsets.all(20.0),
                 child: new Text(
                   'Search Book',
-                  style: TextStyle(fontSize: 20, color: Colors.brown),
+                  style: TextStyle(fontSize: 20, color: Colors.black),
                   textAlign: TextAlign.center,
                 ),
               ),
-              isLoading ? Center(child: CircularProgressIndicator(),):InkWell(
-                onTap: () {
-                  showSearch(context: context, delegate: SearchBook(book));
-                },
-                child: Card(
-                  child: Row(
-                    children: <Widget>[
+              isLoading
+                  ? Center(
+                      child: CircularProgressIndicator(),
+                    )
+                  : InkWell(
+                      onTap: () {
+                        showSearch(
+                            context: context, delegate: SearchBook(book));
+                      },
+                      child: Card(
+                        child: Row(
+                          children: <Widget>[
 //              SizedBox(height: 100,),
-                      Row(
-                        children: <Widget>[
-                          InkWell(
-                            child: IconButton(
-                              icon: Icon(Icons.search),
-                              onPressed: () {
-                                showSearch(
-                                    context: context,
-                                    delegate: SearchBook(book));
-                              },
+                            Row(
+                              children: <Widget>[
+                                InkWell(
+                                  child: IconButton(
+                                    icon: Icon(Icons.search),
+                                    onPressed: () {
+                                      showSearch(
+                                          context: context,
+                                          delegate: SearchBook(book));
+                                    },
+                                  ),
+                                ),
+                                InkWell(
+                                  onTap: () {
+                                    showSearch(
+                                        context: context,
+                                        delegate: SearchBook(book));
+                                  },
+                                  child: Text('Click here to search',
+                                      textAlign: TextAlign.center),
+                                ),
+                              ],
                             ),
-                          ),
-                          InkWell(
-                              onTap: () {
-                                showSearch(
-                                    context: context,
-                                    delegate: SearchBook(book));
-                              },
-                              child: Text('Click search icon to search')),
-//            InkWell(
-//              child: IconButton(
-//                icon: Icon(Icons.search),onPressed: (){
-//                showSearch(context: context, delegate: SearchBook(book));
-//              },
-//              ),
-//            ),
-                        ],
+                          ],
+                        ),
                       ),
-                    ],
-                  ),
-                ),
-              ),
-              SizedBox(height: 20.0),
+                    ),
               SizedBox(
-                width: 100.0,
+//                width: 100.0,
                 height: 50.0,
               ),
+              new Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: new Text(
+                  'Information',
+                  style: TextStyle(fontSize: 20, color: Colors.black),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+              Row(
+//                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: <Widget>[
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => RulePage()));
+                    },
+                    child: Container(
+                      color: Colors.grey,
+                      height: 60,
+                      width: 120,
+                      child: Card(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: <Widget>[
+                            Image(
+                              image: AssetImage("assets/images/rule.jpg"),
+                              height: 50,
+//                              width: 100,
+                              fit: BoxFit.fill,
+                            ),
+//                            Padding(padding: EdgeInsets.all(10.0),),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => UpdatePage()));
+                    },
+                    child: Container(
+                      color: Colors.grey,
+                      height: 60,
+                      width: 120,
+                      child: Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: <Widget>[
+                            Image(
+                              image: AssetImage("assets/images/update.jpg"),
+                              height: 50,
+//                              width: 100,
+                              fit: BoxFit.fill,
+                            ),
+//                            Padding(padding: EdgeInsets.all(10.0),),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+
             ],
           ),
         ),
@@ -382,7 +451,7 @@ class _HomePageState extends State<HomePage> {
 
       floatingActionButton: new FloatingActionButton(
         onPressed: () => modal.mainBottomSheet(context),
-        backgroundColor: Colors.brown,
+        backgroundColor: Colors.black,
         child: new Icon(
           Icons.open_in_new,
           color: Colors.white,
@@ -391,15 +460,15 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  void logout() async {
-    var res = await Network().getData('/logout');
-    var body = json.decode(res.body);
-    if (body['success']) {
-      SharedPreferences localStorage = await SharedPreferences.getInstance();
-      localStorage.remove('user');
-      localStorage.remove('token');
-      Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => Welcome()));
-    }
-  }
+//  void logout() async {
+//    var res = await Network().getData('/logout');
+//    var body = json.decode(res.body);
+//    if (body['success']) {
+//      SharedPreferences localStorage = await SharedPreferences.getInstance();
+//      localStorage.remove('user');
+//      localStorage.remove('token');
+//      Navigator.pushReplacement(
+//          context, MaterialPageRoute(builder: (context) => Welcome()));
+//    }
+//  }
 }

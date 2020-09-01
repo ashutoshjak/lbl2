@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:librarybooklocator/singinup/pages/book.dart';
 import 'package:http/http.dart' as http;
+import 'package:librarybooklocator/singinup/pages/homepage.dart';
 //import 'package:lbladmin/pages/addbook.dart';
 
 class SearchBook extends SearchDelegate {
@@ -81,50 +82,37 @@ class BookDetailPage extends StatelessWidget {
 
 
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.black,
+        centerTitle: true,
+        title: Row(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text("Shelf No:${book.shelfNo}"),
 
-        backgroundColor: Colors.brown[100],
+          ],
+        ),
+      ),
+
+        backgroundColor: Colors.grey,
         body: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Container(
-              child: Column(
-                children: <Widget>[
-//                  Center(
-//                    child: Row(
-//                      children: <Widget>[
-//                        Padding(
-//                          padding: const EdgeInsets.fromLTRB(
-//                              95.0, 10.0, 0, 10.0),
-//                          child: Text(
-//                            'Author Name: ${book.authorName}', style: TextStyle(
-//                              fontSize: 20.0,
-//                              fontWeight: FontWeight.bold
-//                          ),),
-//                        ),
-//
-//
-//                      ],
-//                    ),
-//                  ),
-
-//                SizedBox(
-//                  height: 100,
-//                ),
-                  Row(
-                    children: <Widget>[
-                      GestureDetector(
-                        onTap: (){
-                          Navigator.push(context,
-                              new MaterialPageRoute(builder: (context) => NextPage(book: book)));
-                        },
-                        child: Image.network(book.shelfImage,width: 350,height: 700),
-                      ),
-                    ],
-                  )
-
-                ],
-              ),
-            ),
+          child: Center(
+            child: Row(
+              children: <Widget>[
+                GestureDetector(
+                  onTap: (){
+                    Navigator.push(context,
+                        new MaterialPageRoute(builder: (context) => NextPage(book: book)));
+                  },
+                  child: Image.network(book.shelfImage,
+                      width: MediaQuery.of(context).size.width*1,
+                      height: MediaQuery.of(context).size.height*0.9
+                  ),
+                ),
+              ],
+            )
+            ,
           ),
         )
     );
@@ -140,12 +128,32 @@ class NextPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.brown[100],
-      body: Center(
-        child: Row(
-          children: <Widget>[
-            Image.network(book.bookImage,width: 390,height: 800,),
-          ],
+      appBar: AppBar(
+        title: Text("BookName: ${book.bookName}"),
+        centerTitle: true,
+        backgroundColor: Colors.black,
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.home),
+            onPressed: (){
+              Navigator.push(context, MaterialPageRoute(
+                builder: (context)=>HomePage()
+              ));
+            },
+          )
+        ],
+      ),
+      backgroundColor: Colors.grey,
+      body: SingleChildScrollView(
+        child: Center(
+          child: Row(
+            children: <Widget>[
+              Image.network(book.bookImage,
+                width: MediaQuery.of(context).size.width*1,
+                height: MediaQuery.of(context).size.height*0.9
+              ),
+            ],
+          ),
         ),
       ),
     );

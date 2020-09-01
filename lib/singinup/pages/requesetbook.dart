@@ -1,6 +1,7 @@
 //import 'dart:js';
 
 import 'package:flutter/material.dart';
+import 'package:librarybooklocator/singinup/network_utils/ipaddress.dart';
 import 'package:librarybooklocator/singinup/pages/constants.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -39,9 +40,9 @@ class _RequestBookState extends State<RequestBook> {
 
         title: Text('Request Book',),
         centerTitle: true,
-        backgroundColor: Colors.brown,
+        backgroundColor: Colors.black,
       ),
-      backgroundColor: Colors.brown[100],
+      backgroundColor: Colors.grey,
       body: Container(
         padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
         child: Column(
@@ -65,7 +66,7 @@ class _RequestBookState extends State<RequestBook> {
                   borderRadius: BorderRadius.circular(50.0),
                 ),
                 onPressed: addData,
-                color: Colors.brown,
+                color: Colors.black,
                 child: Text(
                   'Submit',
                   style: TextStyle(color: Colors.white,fontSize: 18.0),
@@ -79,7 +80,7 @@ class _RequestBookState extends State<RequestBook> {
   }
 
   void addData() async {
-    String url = "http://10.0.2.2/LibraryBookLocator/public/api/requestbook";
+    String url = "http://${Server.ipAddress}/LibraryBookLocator/public/api/requestbook";
     await http
         .post(url,
             headers: {'Accept': 'application/json'},
