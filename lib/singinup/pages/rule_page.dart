@@ -83,7 +83,7 @@ class _RulePageState extends State<RulePage> {
               return Card(
                 color: Colors.grey,
                 child: ListTile(
-                    title: Text(rule[index].rule),
+                    title: Text("•  ${rule[index].rule}"),
 
 
                 ),

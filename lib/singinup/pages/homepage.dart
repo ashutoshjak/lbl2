@@ -394,25 +394,33 @@ class _HomePageState extends State<HomePage> {
                     },
                     child: Container(
                       color: Colors.grey,
-                      height: 60,
-                      width: 120,
-                      child: Card(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: <Widget>[
-                            Image(
-                              image: AssetImage("assets/images/rule.jpg"),
-                              height: 50,
+                      height: MediaQuery.of(context).size.height*0.12,
+                      width: MediaQuery.of(context).size.width*0.4,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: <Widget>[
+                          Image(
+                            image: AssetImage("assets/images/rule.jpg"),
+                            height: MediaQuery.of(context).size.height*0.1,
 //                              width: 100,
-                              fit: BoxFit.fill,
-                            ),
+                            fit: BoxFit.fill,
+                          ),
 //                            Padding(padding: EdgeInsets.all(10.0),),
-                          ],
-                        ),
+                        ],
                       ),
                     ),
                   ),
+
+                ],
+              ),
+              SizedBox(
+                height: 20,
+              ),
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
                   InkWell(
                     onTap: () {
                       Navigator.push(
@@ -422,8 +430,8 @@ class _HomePageState extends State<HomePage> {
                     },
                     child: Container(
                       color: Colors.grey,
-                      height: 60,
-                      width: 120,
+                      height: MediaQuery.of(context).size.height*0.12,
+                      width: MediaQuery.of(context).size.width*0.4,
                       child: Center(
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -431,7 +439,7 @@ class _HomePageState extends State<HomePage> {
                           children: <Widget>[
                             Image(
                               image: AssetImage("assets/images/update.jpg"),
-                              height: 50,
+                              height: MediaQuery.of(context).size.height*0.1,
 //                              width: 100,
                               fit: BoxFit.fill,
                             ),
@@ -442,7 +450,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                 ],
-              ),
+              )
 
             ],
           ),

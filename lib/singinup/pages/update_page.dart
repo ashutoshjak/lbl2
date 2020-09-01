@@ -85,7 +85,7 @@ class _UpdatePageState extends State<UpdatePage> {
               return Card(
                 color: Colors.grey,
                 child: ListTile(
-                  title: Text(update[index].update),
+                  title: Text("•  ${update[index].update}"),
 
 
                 ),

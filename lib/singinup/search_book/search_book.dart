@@ -54,16 +54,18 @@ class SearchBook extends SearchDelegate {
     return ListView.builder(
         itemCount: suggestionList.length,
         itemBuilder: (context, index) {
-          return ListTile(
-              title: Text("Book Name: ${suggestionList[index].bookName}"),
-              subtitle: Text("Author Name: ${suggestionList[index].authorName}"),
-              trailing: Text("Piceces: ${suggestionList[index].bookQuantity}"),
-              onTap: () {
-                Navigator.push(context,
-                    new MaterialPageRoute(builder: (context) =>
-                        BookDetailPage(suggestionList[index]))
-                );
-              }
+          return Card(
+            child: ListTile(
+                title: Text("Book Name: ${suggestionList[index].bookName}"),
+                subtitle: Text("Author Name: ${suggestionList[index].authorName}"),
+                trailing: Text("Pieces: ${suggestionList[index].bookQuantity}"),
+                onTap: () {
+                  Navigator.push(context,
+                      new MaterialPageRoute(builder: (context) =>
+                          BookDetailPage(suggestionList[index]))
+                  );
+                }
+            ),
           );
         });
 
