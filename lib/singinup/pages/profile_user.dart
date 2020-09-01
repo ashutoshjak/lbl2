@@ -55,7 +55,7 @@ class _UserProfileState extends State<UserProfile> {
                     Text('Name: $name',
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          fontSize: 25
+                          fontSize: 20
                       ),
                     ),
                     SizedBox(
@@ -64,7 +64,7 @@ class _UserProfileState extends State<UserProfile> {
                     Text('User Id: $userid',
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          fontSize: 25
+                          fontSize: 20
                       ),
                     ),
                     SizedBox(
@@ -72,7 +72,7 @@ class _UserProfileState extends State<UserProfile> {
                     ),
                     Text('Email: $email',
                       style: TextStyle(
-                          fontWeight: FontWeight.bold,fontSize: 25
+                          fontWeight: FontWeight.bold,fontSize: 20
                       ),
                     ),
                     SizedBox(

@@ -430,7 +430,7 @@ class _HomePageState extends State<HomePage> {
                     },
                     child: Container(
                       color: Colors.grey,
-                      height: MediaQuery.of(context).size.height*0.12,
+                      height: MediaQuery.of(context).size.height*0.08,
                       width: MediaQuery.of(context).size.width*0.4,
                       child: Center(
                         child: Column(
@@ -438,8 +438,8 @@ class _HomePageState extends State<HomePage> {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: <Widget>[
                             Image(
-                              image: AssetImage("assets/images/update.jpg"),
-                              height: MediaQuery.of(context).size.height*0.1,
+                              image: AssetImage("assets/images/update.png"),
+                              height: MediaQuery.of(context).size.height*0.065,
 //                              width: 100,
                               fit: BoxFit.fill,
                             ),
