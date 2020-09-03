@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:librarybooklocator/singinup/network_utils/ipaddress.dart';
 import 'package:librarybooklocator/singinup/pages/constants.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
 
 import 'package:librarybooklocator/singinup/pages/homepage.dart';
@@ -20,6 +21,27 @@ class _RequestBookState extends State<RequestBook> {
 
   final _book_name = TextEditingController();
   final _author_name = TextEditingController();
+
+  String name;
+  String userid;
+  String email;
+  @override
+  void initState(){
+    _loadUserData();
+    super.initState();
+  }
+  _loadUserData() async{
+    SharedPreferences localStorage = await SharedPreferences.getInstance();
+    var user = jsonDecode(localStorage.getString('user'));
+
+    if(user != null) {
+      setState(() {
+        name = user['user_name'];
+        userid = user['user_id'];
+        email = user['email'];
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -87,6 +109,7 @@ class _RequestBookState extends State<RequestBook> {
             body: ({
               "book_name": _book_name.text,
               "author_name": _author_name.text,
+              "user_id": userid,
             }))
         .then((response) {
       if (response.statusCode == 201) {
