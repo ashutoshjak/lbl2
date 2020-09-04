@@ -36,69 +36,89 @@ class _UserProfileState extends State<UserProfile> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        backgroundColor: Colors.black,
-        title: Text('Profile'),
+        backgroundColor: Color(0XFFF59C16),
+        elevation: 0,
+        title: Text('Profile',style: TextStyle(fontSize: 25),),
       ),
-      backgroundColor: Colors.grey,
-      body:Center(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
+      backgroundColor: Color(0XFFF59C16),
+      body: Column(
           children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.all(40.0),
-              child: Card(
-                color: Colors.brown[100],
-                elevation: 10,
-                child: Column(
-                  children: <Widget>[
-                    Text('Name: $name',
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20
-                      ),
-                    ),
-                    SizedBox(
-                      height: 20.0,
-                    ),
-                    Text('User Id: $userid',
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20
-                      ),
-                    ),
-                    SizedBox(
-                      height: 20.0,
-                    ),
-                    Text('Email: $email',
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,fontSize: 20
-                      ),
-                    ),
-                    SizedBox(
-                      height: 20.0,
-                    ),
-                    Center(
-                      child: RaisedButton(
-                        elevation: 10,
-                        onPressed: (){
-                          logout();
-                        },
-                        color: Colors.black,
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10)),),
-                        child: Text('Logout',style: TextStyle(
-                            color: Colors.white,fontSize: 18
-                        ),),
+            SizedBox(
+              height: 30,
+            ),
+           Flexible(
+             child: Card(
+               elevation: 5,
+               shape: RoundedRectangleBorder(
+                 borderRadius: BorderRadius.only(
+                     topRight: Radius.circular(40),
+                     topLeft: Radius.circular(40)
+                 ),
+               ),
 
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            )
+               child: Container(
+                 child: Column(
+                   children: <Widget>[
+                     SizedBox(
+                       height: 100,
+                     ),
+                     Text('Name: $name',
+                           style: TextStyle(
+                               fontWeight: FontWeight.bold,
+                               fontSize: 20
+                           ),
+                         ),
+                         SizedBox(
+                           height: 20.0,
+                         ),
+                         Text('User Id: $userid',
+                           style: TextStyle(
+                               fontWeight: FontWeight.bold,
+                               fontSize: 20
+                           ),
+                         ),
+                         SizedBox(
+                           height: 20.0,
+                         ),
+                         Text('Email: $email',
+                           style: TextStyle(
+                               fontWeight: FontWeight.bold,fontSize: 20
+                           ),
+                         ),
+                         SizedBox(
+                           height: 20.0,
+                         ),
+                         Center(
+                           child: SizedBox(
+                             width: 100.0,
+                             height: 50.0,
+                             child: RaisedButton(
+                               elevation: 10,
+                               onPressed: (){
+                                 logout();
+                               },
+                               color: Color(0XFFF59C16),
+                               shape: RoundedRectangleBorder(
+                                 borderRadius: BorderRadius.circular(50.0),
+                               ),
+                               child: Text('Logout',style: TextStyle(
+                                   color: Colors.white,fontSize: 18
+                               ),),
+
+                             ),
+                           ),
+                         ),
+
+
+                   ],
+                 ),
+               ),
+             ),
+           )
+
           ],
         ),
-      ),
+
     );
   }
 

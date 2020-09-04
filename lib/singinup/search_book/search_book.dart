@@ -85,7 +85,7 @@ class BookDetailPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.black,
+        backgroundColor: Color(0XFFF59C16),
         centerTitle: true,
         title: Row(
           mainAxisSize: MainAxisSize.min,
@@ -133,7 +133,7 @@ class NextPage extends StatelessWidget {
       appBar: AppBar(
         title: Text("BookName: ${book.bookName}"),
         centerTitle: true,
-        backgroundColor: Colors.black,
+        backgroundColor: Color(0XFFF59C16),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.home),

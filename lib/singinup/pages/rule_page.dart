@@ -66,11 +66,13 @@ class _RulePageState extends State<RulePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Rule'),
+        title: Text('Rule',style: TextStyle(
+          fontSize: 25.0
+        ),),
         centerTitle: true,
-        backgroundColor: Colors.black,
+        backgroundColor: Color(0XFFF59C16),
       ) ,
-      backgroundColor: Colors.grey,
+      backgroundColor: Colors.white,
         body: isLoading
             ? Center(
           child: CircularProgressIndicator(),
@@ -80,13 +82,18 @@ class _RulePageState extends State<RulePage> {
           child: ListView.builder (
             itemCount: rule == null ? 0 : rule.length,
             itemBuilder: (BuildContext context, index) {
-              return Card(
-                color: Colors.grey,
-                child: ListTile(
-                    title: Text("•  ${rule[index].rule}"),
+              return Column(
+                children: <Widget>[
+                  Card(
+                    elevation: 5,
+                    color: Colors.white,
+                    child: ListTile(
+                        title: Text("•  ${rule[index].rule}"),
 
 
-                ),
+                    ),
+                  ),
+                ],
               );
             },
           ),

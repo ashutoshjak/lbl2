@@ -49,6 +49,7 @@ class _RequestBookState extends State<RequestBook> {
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         leading: Text(''),
+        elevation: 0,
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.close),
@@ -60,44 +61,65 @@ class _RequestBookState extends State<RequestBook> {
           )
         ],
 
-        title: Text('Request Book',),
+        title: Text('Request Book',style: TextStyle(
+          fontSize: 25.0
+        ),),
         centerTitle: true,
-        backgroundColor: Colors.black,
+        backgroundColor: Color(0XFFF59C16),
       ),
-      backgroundColor: Colors.grey,
-      body: Container(
-        padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
-        child: Column(
-          children: <Widget>[
-            SizedBox(height: 50.0),
-            TextField(
-              controller: _book_name,
-              decoration: textInputDecoration.copyWith(hintText: 'Book Name'),
-            ),
-            SizedBox(height: 20.0),
-            TextField(
-              controller: _author_name,
-              decoration: textInputDecoration.copyWith(hintText: 'Author Name'),
-            ),
-            SizedBox(height: 20.0),
-            SizedBox(
-              width: 100.0,
-              height: 50.0,
-              child: RaisedButton(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(50.0),
+      backgroundColor: Color(0XFFF59C16),
+      body: Column(
+        children: <Widget>[
+          SizedBox(
+            height: 30,
+          ),
+          Flexible(
+            child: Card(
+              elevation: 5,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(40),
+                    topLeft: Radius.circular(40)
                 ),
-                onPressed: addData,
-                color: Colors.black,
-                child: Text(
-                  'Submit',
-                  style: TextStyle(color: Colors.white,fontSize: 18.0),
+              ),
+
+              child: Container(
+                padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
+                child: Column(
+                  children: <Widget>[
+                    SizedBox(height: 50.0),
+                    TextField(
+                      controller: _book_name,
+                      decoration: textInputDecoration.copyWith(hintText: 'Book Name'),
+                    ),
+                    SizedBox(height: 30.0),
+                    TextField(
+                      controller: _author_name,
+                      decoration: textInputDecoration.copyWith(hintText: 'Author Name'),
+                    ),
+                    SizedBox(height: 30.0),
+                    SizedBox(
+                      width: 100.0,
+                      height: 50.0,
+                      child: RaisedButton(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(50.0),
+                        ),
+                        onPressed: addData,
+                        color: Color(0XFFF59C16),
+                        child: Text(
+                          'Submit',
+                          style: TextStyle(color: Colors.white,fontSize: 18.0),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),
-          ],
-        ),
-      ),
+          )
+        ],
+      )
     );
   }
 

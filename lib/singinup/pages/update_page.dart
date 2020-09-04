@@ -68,11 +68,13 @@ class _UpdatePageState extends State<UpdatePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Update'),
+        title: Text('Update',style: TextStyle(
+          fontSize: 25.0
+        ),),
         centerTitle: true,
-        backgroundColor: Colors.black,
+        backgroundColor: Color(0XFFF59C16),
       ) ,
-        backgroundColor: Colors.grey,
+        backgroundColor: Colors.white,
         body: isLoading
             ? Center(
           child: CircularProgressIndicator(),
@@ -82,13 +84,18 @@ class _UpdatePageState extends State<UpdatePage> {
           child: ListView.builder (
             itemCount: update == null ? 0 : update.length,
             itemBuilder: (BuildContext context, index) {
-              return Card(
-                color: Colors.grey,
-                child: ListTile(
-                  title: Text("•  ${update[index].update}"),
+              return Column(
+                children: <Widget>[
+                  Card(
+                    elevation: 5,
+                    color: Colors.white,
+                    child: ListTile(
+                      title: Text("•  ${update[index].update}"),
 
 
-                ),
+                    ),
+                  ),
+                ],
               );
             },
           ),
