@@ -91,7 +91,7 @@ class BookDetailPage extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text("Shelf No:${book.shelfNo}"),
+            Text("Shelf No:${book.shelfNo}",style: TextStyle(fontFamily: "Ropa",fontSize: 25.0),),
 
           ],
         ),
@@ -131,7 +131,7 @@ class NextPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("BookName: ${book.bookName}"),
+        title: Text("BookName: ${book.bookName}",style: TextStyle(fontFamily: "Ropa",fontSize: 25.0),),
         centerTitle: true,
         backgroundColor: Color(0XFFF59C16),
         actions: <Widget>[

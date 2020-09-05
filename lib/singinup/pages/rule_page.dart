@@ -67,7 +67,7 @@ class _RulePageState extends State<RulePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Rule',style: TextStyle(
-          fontSize: 25.0
+          fontSize: 25.0,fontFamily: "Ropa",
         ),),
         centerTitle: true,
         backgroundColor: Color(0XFFF59C16),

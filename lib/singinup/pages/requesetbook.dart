@@ -62,7 +62,7 @@ class _RequestBookState extends State<RequestBook> {
         ],
 
         title: Text('Request Book',style: TextStyle(
-          fontSize: 25.0
+          fontSize: 25.0, fontFamily: "Ropa",
         ),),
         centerTitle: true,
         backgroundColor: Color(0XFFF59C16),

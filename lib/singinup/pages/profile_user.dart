@@ -38,7 +38,7 @@ class _UserProfileState extends State<UserProfile> {
         centerTitle: true,
         backgroundColor: Color(0XFFF59C16),
         elevation: 0,
-        title: Text('Profile',style: TextStyle(fontSize: 25),),
+        title: Text('Profile',style: TextStyle(fontSize: 25,fontFamily: "Ropa",),),
       ),
       backgroundColor: Color(0XFFF59C16),
       body: Column(

@@ -69,7 +69,7 @@ class _UpdatePageState extends State<UpdatePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Update',style: TextStyle(
-          fontSize: 25.0
+          fontSize: 25.0,fontFamily: "Ropa",
         ),),
         centerTitle: true,
         backgroundColor: Color(0XFFF59C16),

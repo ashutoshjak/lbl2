@@ -98,8 +98,8 @@ class _HomePageState extends State<HomePage> {
         automaticallyImplyLeading: false,
         title: Center(
           child: Text(
-            'LibraryBookLocator',style: TextStyle(
-            fontSize: 25.0
+            'Library Book Locator',style: TextStyle(
+            fontSize: 30.0, fontFamily: "Ropa",
           ),
           ),
         ),

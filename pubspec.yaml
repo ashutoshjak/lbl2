@@ -46,9 +46,9 @@ flutter:
   # the material Icons class.
   uses-material-design: true
   fonts:
-    - family: Signatra
+    - family: Ropa
       fonts:
-        - asset: assets/fonts/Signatra.ttf
+        - asset: assets/fonts/RopaSans-Regular.ttf
   assets:
       - assets/images/
 
