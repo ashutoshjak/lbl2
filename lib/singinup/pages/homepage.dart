@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:librarybooklocator/singinup/network_utils/ipaddress.dart';
 import 'package:librarybooklocator/singinup/pages/profile_user.dart';
 import 'package:librarybooklocator/singinup/pages/book.dart';
+import 'package:librarybooklocator/singinup/pages/requesetbook.dart';
 import 'package:librarybooklocator/singinup/search_book/search_book.dart';
 import 'package:librarybooklocator/singinup/pages/rule_page.dart';
 import 'package:librarybooklocator/singinup/pages/update_page.dart';
@@ -235,7 +236,7 @@ class _HomePageState extends State<HomePage> {
                        margin: EdgeInsets.all(8.0),
                        child: InkWell(
                          onTap: () {
-                           Navigator.of(context).push(new MaterialPageRoute(builder: (BuildContext context)=>new UserProfile()));
+                           Navigator.of(context).push(new MaterialPageRoute(builder: (BuildContext context)=>new RequestBook()));
                          },
                          child: Center(
                            child: Column(
@@ -245,10 +246,11 @@ class _HomePageState extends State<HomePage> {
                                    iconSize: 60,
                                    alignment: Alignment.topCenter,
                                    icon: Icon(
-                                       Icons.person
-                                   )),
+                                       Icons.library_books
+                                   )
+                               ),
                                Text(
-                                 'Profile',
+                                 'Request Book',
                                  style: new TextStyle(fontSize: 17.0),
                                )
                              ],
@@ -256,15 +258,11 @@ class _HomePageState extends State<HomePage> {
                          ),
                        ),
                      ),
-
-
                    ],
                  )
              ),
            ),
-
-
-       )
+       ),
       ],
     ),
 

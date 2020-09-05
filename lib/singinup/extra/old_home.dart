@@ -401,7 +401,7 @@ class _HomePageState extends State<HomePage> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: <Widget>[
                           Image(
-                            image: AssetImage("assets/images/rule.jpg"),
+
                             height: MediaQuery.of(context).size.height*0.1,
 //                              width: 100,
                             fit: BoxFit.fill,
@@ -438,7 +438,7 @@ class _HomePageState extends State<HomePage> {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: <Widget>[
                             Image(
-                              image: AssetImage("assets/images/update.png"),
+
                               height: MediaQuery.of(context).size.height*0.065,
 //                              width: 100,
                               fit: BoxFit.fill,

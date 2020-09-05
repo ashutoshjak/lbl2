@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:librarybooklocator/singinup/pages/profile_user.dart';
 import 'package:librarybooklocator/singinup/pages/requesetbook.dart';
 
 import 'homepage.dart';
@@ -13,10 +14,10 @@ class Modal {
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               ListTile(
-                leading: Icon(Icons.library_books),
-                title: Text('Request Book'),
+                leading: Icon(Icons.person),
+                title: Text('Profile'),
                 onTap: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>RequestBook()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>UserProfile()));
                 },
               ),
               ListTile(
