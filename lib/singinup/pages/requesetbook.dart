@@ -21,6 +21,8 @@ class _RequestBookState extends State<RequestBook> {
 
   final _book_name = TextEditingController();
   final _author_name = TextEditingController();
+  final _book_publication = TextEditingController();
+  final _book_edition = TextEditingController();
 
   String name;
   String userid;
@@ -83,37 +85,49 @@ class _RequestBookState extends State<RequestBook> {
                 ),
               ),
 
-              child: Container(
-                padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
-                child: Column(
-                  children: <Widget>[
-                    SizedBox(height: 50.0),
-                    TextField(
-                      controller: _book_name,
-                      decoration: textInputDecoration.copyWith(hintText: 'Book Name'),
-                    ),
-                    SizedBox(height: 30.0),
-                    TextField(
-                      controller: _author_name,
-                      decoration: textInputDecoration.copyWith(hintText: 'Author Name'),
-                    ),
-                    SizedBox(height: 30.0),
-                    SizedBox(
-                      width: 100.0,
-                      height: 50.0,
-                      child: RaisedButton(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(50.0),
-                        ),
-                        onPressed: addData,
-                        color: Color(0XFFF59C16),
-                        child: Text(
-                          'Submit',
-                          style: TextStyle(color: Colors.white,fontSize: 18.0),
+              child: SingleChildScrollView(
+                child: Container(
+                  padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
+                  child: Column(
+                    children: <Widget>[
+                      SizedBox(height: 50.0),
+                      TextField(
+                        controller: _book_name,
+                        decoration: textInputDecoration.copyWith(hintText: 'Book Name'),
+                      ),
+                      SizedBox(height: 30.0),
+                      TextField(
+                        controller: _author_name,
+                        decoration: textInputDecoration.copyWith(hintText: 'Author Name'),
+                      ),
+                      SizedBox(height: 30.0),
+                      TextField(
+                        controller: _book_publication,
+                        decoration: textInputDecoration.copyWith(hintText: 'Book Publication'),
+                      ),
+                      SizedBox(height: 30.0),
+                      TextField(
+                        controller: _book_edition,
+                        decoration: textInputDecoration.copyWith(hintText: 'Book Edition'),
+                      ),
+                      SizedBox(height: 30.0),
+                      SizedBox(
+                        width: 100.0,
+                        height: 50.0,
+                        child: RaisedButton(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(50.0),
+                          ),
+                          onPressed: addData,
+                          color: Color(0XFFF59C16),
+                          child: Text(
+                            'Submit',
+                            style: TextStyle(color: Colors.white,fontSize: 18.0),
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -131,6 +145,8 @@ class _RequestBookState extends State<RequestBook> {
             body: ({
               "book_name": _book_name.text,
               "author_name": _author_name.text,
+              "book_publication": _book_publication.text,
+              "book_edition": _book_edition.text,
               "user_id": userid,
             }))
         .then((response) {
