@@ -189,7 +189,7 @@ class _HomePageState extends State<HomePage> {
                                        Icons.update
                                    )),
                                Text(
-                                 'Update',
+                                 'Announcement',
                                  style: new TextStyle(fontSize: 17.0),
                                )
                              ],

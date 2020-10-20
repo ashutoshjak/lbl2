@@ -35,7 +35,9 @@ class _RegisterState extends State<Register> {
                 padding: const EdgeInsets.all(8.0),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
+                  children: <Widget>[                    new Padding(padding: const EdgeInsets.all(20.0),
+                    child: new Text('Register',style: TextStyle(fontSize: 25.0,color: Colors.white),textAlign: TextAlign.center,),),
+                    SizedBox(height: 20.0),
                     Card(
                       elevation: 4.0,
                       color: Colors.white,
