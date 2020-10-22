@@ -87,6 +87,7 @@ class _RequestBookState extends State<RequestBook> {
 
               child: SingleChildScrollView(
                 child: Container(
+                  height: MediaQuery.of(context).size.height*0.9,
                   padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
                   child: Column(
                     children: <Widget>[

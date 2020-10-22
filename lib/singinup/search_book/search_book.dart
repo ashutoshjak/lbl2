@@ -38,7 +38,30 @@ class SearchBook extends SearchDelegate {
   @override
   Widget buildResults(BuildContext context) {
     // TODO: implement buildResults
-    return Text(""); //Container();
+    final suggestionList = query.isEmpty
+        ? boo
+        : boo
+        .where((element) =>
+        element.bookName.toString().toLowerCase().startsWith(query))
+        .toList();
+
+    return ListView.builder(
+        itemCount: suggestionList.length,
+        itemBuilder: (context, index) {
+          return Card(
+            child: ListTile(
+                title: Text("Book Name: ${suggestionList[index].bookName}"),
+                subtitle: Text("Author Name: ${suggestionList[index].authorName}"),
+                trailing: Text("Pieces: ${suggestionList[index].bookQuantity}"),
+                onTap: () {
+                  Navigator.push(context,
+                      new MaterialPageRoute(builder: (context) =>
+                          BookDetailPage(suggestionList[index]))
+                  );
+                }
+            ),
+          );
+        });
   }
 
   @override
