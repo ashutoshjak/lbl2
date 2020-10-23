@@ -1,14 +1,19 @@
+
+
 import 'package:flutter/material.dart';
 import 'package:librarybooklocator/singinup/pages/book.dart';
 import 'package:http/http.dart' as http;
 import 'package:librarybooklocator/singinup/pages/homepage.dart';
-//import 'package:lbladmin/pages/addbook.dart';
+
+
+
 
 class SearchBook extends SearchDelegate {
 
   List<Book> boo;
 
   SearchBook(this.boo);
+
 
 
   @override
@@ -45,7 +50,7 @@ class SearchBook extends SearchDelegate {
         element.bookName.toString().toLowerCase().startsWith(query))
         .toList();
 
-    return ListView.builder(
+    return suggestionList.isEmpty ? Center(child: Text("Book not Found")) : ListView.builder(
         itemCount: suggestionList.length,
         itemBuilder: (context, index) {
           return Card(
@@ -67,33 +72,37 @@ class SearchBook extends SearchDelegate {
   @override
   Widget buildSuggestions(BuildContext context) {
     // TODO: implement buildSuggestions
-    final suggestionList = query.isEmpty
-        ? boo
-        : boo
-        .where((element) =>
-        element.bookName.toString().toLowerCase().startsWith(query))
-        .toList();
 
-    return ListView.builder(
-        itemCount: suggestionList.length,
-        itemBuilder: (context, index) {
-          return Card(
-            child: ListTile(
-                title: Text("Book Name: ${suggestionList[index].bookName}"),
-                subtitle: Text("Author Name: ${suggestionList[index].authorName}"),
-                trailing: Text("Pieces: ${suggestionList[index].bookQuantity}"),
-                onTap: () {
-                  Navigator.push(context,
-                      new MaterialPageRoute(builder: (context) =>
-                          BookDetailPage(suggestionList[index]))
-                  );
-                }
-            ),
-          );
-        });
+     final suggestionList = query.isEmpty
+         ? boo
+         : boo
+         .where((element) =>
+         element.bookName.toString().toLowerCase().startsWith(query))
+         .toList();
+
+     return suggestionList.isEmpty ? Center(child: Text("Book not Found")) : ListView.builder(
+         itemCount: suggestionList.length,
+         itemBuilder: (context, index) {
+           return Card(
+             child: ListTile(
+                 title: Text("Book Name: ${suggestionList[index].bookName}"),
+                 subtitle: Text("Author Name: ${suggestionList[index].authorName}"),
+                 trailing: Text("Pieces: ${suggestionList[index].bookQuantity}"),
+                 onTap: () {
+                   Navigator.push(context,
+                       new MaterialPageRoute(builder: (context) =>
+                           BookDetailPage(suggestionList[index]))
+                   );
+                 }
+             ),
+           );
+         });
+
 
   }
 }
+
+
 
 class BookDetailPage extends StatelessWidget {
 

@@ -79,7 +79,7 @@ class _RulePageState extends State<RulePage> {
         )
             : RefreshIndicator(
           onRefresh: _getData,
-          child: ListView.builder (
+          child: rule.isEmpty ? Center(child: Text("No rule found")) : ListView.builder (
             itemCount: rule == null ? 0 : rule.length,
             itemBuilder: (BuildContext context, index) {
               return Column(

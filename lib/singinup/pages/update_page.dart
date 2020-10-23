@@ -81,7 +81,7 @@ class _UpdatePageState extends State<UpdatePage> {
         )
             : RefreshIndicator(
           onRefresh: _getData,
-          child: ListView.builder (
+          child: update.isEmpty ? Center(child: Text("No update found")) : ListView.builder (
             itemCount: update == null ? 0 : update.length,
             itemBuilder: (BuildContext context, index) {
               return Column(
