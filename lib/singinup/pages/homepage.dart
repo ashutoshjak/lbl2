@@ -114,8 +114,10 @@ class _HomePageState extends State<HomePage> {
 
 //<========================================BODY START=================================================>//
 
-    backgroundColor: Color(0XFFF59C16),
-    body: Column(
+    backgroundColor: isLoading ? Colors.white : Color(0XFFF59C16),
+    body:  isLoading ?  Center(
+      child: CircularProgressIndicator(),
+    ):  Column(
       children: <Widget>[
        SizedBox(
          height: 30,
@@ -135,9 +137,7 @@ class _HomePageState extends State<HomePage> {
                  child: GridView.count(
                    crossAxisCount: 2,
                    children: <Widget>[
-                     isLoading ? Center(
-                       child: CircularProgressIndicator(),
-                     ):
+
                      Card(
                        margin: EdgeInsets.all(8.0),
                         elevation: 5,

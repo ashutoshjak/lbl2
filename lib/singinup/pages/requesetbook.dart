@@ -50,18 +50,23 @@ class _RequestBookState extends State<RequestBook> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        leading: Text(''),
         elevation: 0,
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.close),
-            onPressed: (){
-              Navigator.push(context, MaterialPageRoute(
-                  builder: (context)=>HomePage()
-              ));
-            }
-          )
-        ],
+        leading: IconButton(icon: Icon(Icons.arrow_back),
+          onPressed: (){
+            Navigator.push(context,
+                new MaterialPageRoute(builder: (context) => HomePage()));
+          },),
+
+//        actions: <Widget>[
+//          IconButton(
+//            icon: Icon(Icons.close),
+//            onPressed: (){
+//              Navigator.push(context, MaterialPageRoute(
+//                  builder: (context)=>HomePage()
+//              ));
+//            }
+//          )
+//        ],
 
         title: Text('Request Book',style: TextStyle(
           fontSize: 25.0, fontFamily: "Ropa",

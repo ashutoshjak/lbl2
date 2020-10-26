@@ -4,6 +4,7 @@ import 'package:librarybooklocator/singinup/model/upate.dart';
 import 'dart:convert';
 
 import 'package:librarybooklocator/singinup/network_utils/ipaddress.dart';
+import 'package:librarybooklocator/singinup/pages/homepage.dart';
 
 
 
@@ -68,6 +69,12 @@ class _UpdatePageState extends State<UpdatePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(icon: Icon(Icons.arrow_back),
+          onPressed: (){
+            Navigator.pushReplacement(context,
+                new MaterialPageRoute(builder: (context) => HomePage()));
+          },),
+
         title: Text('Announcement',style: TextStyle(
           fontSize: 25.0,fontFamily: "Ropa",
         ),),

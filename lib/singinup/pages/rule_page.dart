@@ -4,6 +4,7 @@ import 'package:librarybooklocator/singinup/model/rule.dart';
 import 'dart:convert';
 
 import 'package:librarybooklocator/singinup/network_utils/ipaddress.dart';
+import 'package:librarybooklocator/singinup/pages/homepage.dart';
 
 
 class RulePage extends StatefulWidget {
@@ -66,6 +67,11 @@ class _RulePageState extends State<RulePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(icon: Icon(Icons.arrow_back),
+        onPressed: (){
+          Navigator.pushReplacement(context,
+              new MaterialPageRoute(builder: (context) => HomePage()));
+        },),
         title: Text('Rule',style: TextStyle(
           fontSize: 25.0,fontFamily: "Ropa",
         ),),

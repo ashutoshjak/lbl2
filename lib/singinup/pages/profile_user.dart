@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:librarybooklocator/singinup/pages/homepage.dart';
 import 'package:librarybooklocator/singinup/welcome.dart';
 import 'package:librarybooklocator/singinup/network_utils/api.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -38,6 +39,12 @@ class _UserProfileState extends State<UserProfile> {
         centerTitle: true,
         backgroundColor: Color(0XFFF59C16),
         elevation: 0,
+        leading: IconButton(icon: Icon(Icons.arrow_back),
+          onPressed: (){
+            Navigator.pushReplacement(context,
+                new MaterialPageRoute(builder: (context) => HomePage()));
+          },),
+
         title: Text('Profile',style: TextStyle(fontSize: 25,fontFamily: "Ropa",),),
       ),
       backgroundColor: Color(0XFFF59C16),
