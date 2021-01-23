@@ -18,6 +18,8 @@ class _RulePageState extends State<RulePage> {
 
   String url = "http://${Server.ipAddress}/LibraryBookLocator/public/api/rules";
 
+//  String url = "http://${Server.ipAddress}/public/api/rules";
+
   Future<List<Rule>> fetchRule() async {
     try {
       final response = await http.get(url);
